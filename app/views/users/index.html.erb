@@ -1,0 +1,7 @@
+<h1>others you may like to follow..</h1>
+
+<% @users.each do |user| %>
+  <% next if user.id == @current_user.id %>
+  <%= link_to user.name, user_path(user.id) %><br>
+  <%= user.profile %>
+<% end %>

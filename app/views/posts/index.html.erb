@@ -1,0 +1,7 @@
+<h1>check out what other users have posted..</h1>
+
+<% @posts.each do |post| %>
+  <% next if post.id == @current_user.id %>
+  <%= link_to post.image, post_path(post.id) %><br>
+  <%= user.profile %>
+<% end %>

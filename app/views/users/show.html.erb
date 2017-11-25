@@ -1,0 +1,21 @@
+<h1>Profile Page</h1>
+
+<h2></h2>
+
+<% if @user.image.nil? %>
+  <%= image_tag 'default-header.jpg' %>
+<% else %>
+  <% image_tag @user.image %>
+<% end %>
+
+<% if @user.id == @current_user.id %>
+  Welcome back <%= @user.name %>
+<% else %>
+  <%= @user.name %>
+<% end %>
+
+<% if @user.profile.nil? %>
+  <%= image_tag 'default-profile.png' %>
+<% else %>
+  <% image_tag @user.profile %>
+<% end %>
