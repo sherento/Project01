@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   resources :posts, :only => [:new, :show, :create, :edit, :update, :index]
 
+  resources :posts do
+  resources :comments
+  end
 
 end

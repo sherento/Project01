@@ -10,8 +10,13 @@
 #
 
 class Post < ApplicationRecord
+
   belongs_to :user, :optional => true
 
-  validates :image, :presence => true
-  has_attached_file :image 
+  validates :user_id, presence: true
+
+  mount_uploader :image, PhotoUploader
+
+  has_many :comments, dependent: :destroy
+
 end

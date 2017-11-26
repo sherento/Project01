@@ -1,9 +1,10 @@
-class PictureUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
-
+  include Sprockets::Rails::Helper
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -13,11 +14,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
-      # uploader = PictureUploader.new
-
-      # uploader.store!(my_file)
-      # uploader.retrieve_from_store!('my_file.png')
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -37,6 +33,18 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [50, 50]
+  end
+
+  version :profile_size do
+    process :resize_to_fill => [200, 200]
+  end
+
+  version :post_size do
+    process :resize_to_fill => [400, 400]
+  end
+
+  version :banner do
+    process :resize_to_fill => [600, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
