@@ -1,7 +1,6 @@
 
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :only => [:edit]
-  #before_action :check_if_admin, :only => [:index] #required? since show users to follow?
 
   def index
     @users = User.all
@@ -19,10 +18,11 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to user_path(@user.id)
     else
       render :new
     end
+
   end
 
   def edit
@@ -32,11 +32,19 @@ class UsersController < ApplicationController
   def update
     user = @current_user
     user.update user_params
-    redirect_to users_path #same as create above, take user to their profile page
+    redirect_to user_path
+  end
+
+  def follow(user_id)
+    following_relationships.create(following_id: user_id)
+  end
+
+  def unfollow(user_id)
+    following_relationships.find_by(following_id: user_id).destroy
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

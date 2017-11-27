@@ -2,7 +2,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
   def change
     create_table :posts do |t|
       t.text :title
-      t.text :image
+      t.text :photograph
       t.text :caption
       t.timestamps
     end

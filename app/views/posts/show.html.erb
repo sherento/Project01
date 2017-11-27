@@ -7,25 +7,18 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag(@post.image.profile_size.url) %>
+  <% if @current_post.photograph.nil? %>
+    <%= image_tag 'default-post.jpg', :size => '200x200' %>
+  <% else %>
+  <%= image_tag(@post.photograph) %>
+  <% end %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @post.caption %>
+  <%=  @post.caption %>
 </p>
 
-<p>
-  <strong>What am I pondering on right now..:</strong>
-  <%= @post.comments %>
-</p>
-
-<p>
-  <strong>Blog:</strong>
-  <%= @post.blog_image.profile_size.url %>
-  <%= @post.blog_description %>
-</p>
-
-
-<%= link_to 'Edit', user_path(@post) %> |
-<%= link_to 'Back', user_path %>
+<%= link_to 'edit', edit_post_path %>
+|
+<%= link_to 'delete', edit_post_path %>

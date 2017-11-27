@@ -4,17 +4,6 @@
 
   <%= form_for(@post) do |f| %>
 
-    <% if @post.errors.any? %>
-      <div id="error_explanation">
-        <h3><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h3>
-        <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <fieldset class="field">
       <%= f.label :title %><br>
       <%= f.text_field :title %>
@@ -34,6 +23,7 @@
       <label></label>
       <%= f.submit 'Post me!'%>
     </fieldset>
+
 
   <% end %>
 <% end %>
