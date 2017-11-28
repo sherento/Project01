@@ -21,9 +21,9 @@
 <br>
 
 <% if @user.header.nil? %>
-  <% image_tag 'default-header.jpg', :size => '600x600' %>
+  <%= image_tag 'default-header.jpg'  %>
 <% else %>
-  <% image_tag @user.header, :size => '600x600' %>
+  <%= image_tag @user.header, :size => '600x600' %>
 <% end %>
 
 <br>

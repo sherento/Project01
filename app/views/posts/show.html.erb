@@ -1,4 +1,4 @@
-<h2>my posts..</h2>
+<h2>posts..</h2>
 
 <p>
   <strong>Title:</strong>
@@ -19,7 +19,22 @@
   <%= @post.caption %>
 </p>
 
-<% if @user.id == @current_user.id %>
+<p>
+  <strong>Comments</strong>
+  <%= form_for [@post, @post.comments.new] do |f| %>
+    <%= f.text_field :content, placeholder: 'Add a comment...' %>
+  <% end %>
+  <button class="glyphicon glyphicon-heart-empty"></button>
+  <button class="glyphicon glyphicon-cutlery"></button>
+  <button class="glyphicon glyphicon-sunglasses"></button>
+  <button>add comment</button>
+</p>
+
+<!-- glyphicon glyphicon-heart -->
+
+
+
+<% if @post.user.id == @current_user.id %>
   <%= link_to 'edit', edit_post_path(@post.id) %>
   |
   <%= link_to 'delete', post_path(@post.id), :method => 'delete'  %>

@@ -3,24 +3,23 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    @comment = @post.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment = @post.comments. comment_params
+    @comment.user_id = @current_user.id
 
     if @comment.save
-      flash[:success] = "You didn't have to comment so much!"
-      redirect_to post_path
+      redirect_to posts_path(@post.id)
     else
       flash[:alert] = "Check the comment form, something went horribly wrong."
-      render post_comment_path
+      render posts_path(@post.id)
     end
   end
 
+
   def destroy
   @comment = @post.comments.find(params[:id])
-
   @comment.destroy
   flash[:success] = "Comment deleted :("
-  redirect_to root_path
+  redirect_to posts_path
 end
 
   private
