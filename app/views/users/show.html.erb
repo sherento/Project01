@@ -23,13 +23,13 @@
 <% if @user.header.nil? %>
   <% image_tag 'default-header.jpg', :size => '600x600' %>
 <% else %>
-  <% image_tag @user.header %>
+  <% image_tag @user.header, :size => '600x600' %>
 <% end %>
 
 <br>
 
 <% if @current_user.present? && @user.id == @current_user.id %>
-  Welcome back <%= @user.name %>
+  welcome back <%= @user.name %>
 <% else %>
   <%= @user.name %>
 <% end %>
@@ -37,15 +37,15 @@
 <% if @user.profile.nil? %>
   <%= image_tag 'default-profile.png', :size => '50x50' %>
 <% else %>
-  <%= image_tag @user.profile %>
+  <%= image_tag @user.profile, :size => '50x50' %>
 <% end %>
 
 <% @user.posts.each do |post| %>
-  <p><%= link_to post.title, post_path %></p>
+  <p><%= link_to post.title, post_path(post) %></p>
 <% end %>
 
-<% if @user == @current_user %>
-  <%= link_to 'Edit Profile', edit_user_path(@current_user), class: 'btn edit-button' %>
+<% if @user.id == @current_user.id %>
+  <!-- <%= link_to 'Edit Profile', edit_user_path(@current_user.id), class: 'btn edit-button' %> -->
 <% else %>
   <% if current_user_is_following(@current_user.id, @user.id) %>
     <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
@@ -53,3 +53,18 @@
     <%= link_to 'Follow', follow_user_path(@user.id), remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
   <% end %>
 <% end %>
+
+<script>
+  // Week 7 code below:
+  $(document).ready(function () {
+    $('.btn.unfollow-button, .btn.follow-button').on('ajax:success', function (response) {
+      if ($(this).is('#unfollow-button')) {
+        $('#unfollow-button').text('Follow').attr('class','btn follow-button')
+        .attr('href', "/<%= @user.id %>/follow_user").attr('id', 'follow-button');
+      } else {
+        $('#follow-button').attr('class', 'btn unfollow-button').text('Following')
+        .attr('href', "/<%= @user.id %>/unfollow_user").attr('id', 'unfollow-button');
+      }
+    });
+  })
+</script>

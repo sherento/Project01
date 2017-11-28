@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     redirect_to user_path
   end
 
+
   def follow(user_id)
     following_relationships.create(following_id: user_id)
   end
@@ -45,6 +46,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile, :header)
   end
 end

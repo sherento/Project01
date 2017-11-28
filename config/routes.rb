@@ -16,11 +16,11 @@ Rails.application.routes.draw do
   resources :posts, :only => [:new, :show, :create, :edit, :update, :index, :destroy]
 
   resources :posts do
-  resources :comments
+    resources :comments
   end
 
-  post ':user_name/follow_user', to: 'relationships#follow_user', as: :follow_user
-  post ':user_name/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
+  post ':user_id/follow_user', to: 'relationships#follow_user', as: :follow_user
+  post ':user_id/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
 
 
 end

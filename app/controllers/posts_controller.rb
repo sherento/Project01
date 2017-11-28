@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+
   end
 
   def create
@@ -37,13 +38,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(:created_at)
+    @posts = Post.all.order(:created_at)
   end
 
   def destroy
     post = Post.find params[:id]
     post.destroy
-    redirect_to user_path
+    redirect_to user_path(@current_user.id)
   end
 
 
@@ -54,7 +55,7 @@ class PostsController < ApplicationController
   end
 
   def own_post
-    unless @current_user == @post.user
+    unless @current_user.post_ids.include? params[:id].to_i
       flash[:alert] = "That post doesn't belong to you!"
       redirect_to user_path
     end

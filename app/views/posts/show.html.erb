@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <% if @current_post.photograph.nil? %>
+  <% if @post.photograph.nil? %>
     <%= image_tag 'default-post.jpg', :size => '200x200' %>
   <% else %>
   <%= image_tag(@post.photograph) %>
@@ -16,9 +16,11 @@
 
 <p>
   <strong>Description:</strong>
-  <%=  @post.caption %>
+  <%= @post.caption %>
 </p>
 
-<%= link_to 'edit', edit_post_path %>
-|
-<%= link_to 'delete', edit_post_path %>
+<% if @user.id == @current_user.id %>
+  <%= link_to 'edit', edit_post_path(@post.id) %>
+  |
+  <%= link_to 'delete', post_path(@post.id), :method => 'delete'  %>
+<% end %>
