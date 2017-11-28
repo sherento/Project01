@@ -23,11 +23,23 @@
   <strong>Comments</strong>
   <%= form_for [@post, @post.comments.new] do |f| %>
     <%= f.text_field :content, placeholder: 'Add a comment...' %>
+    <%= f.submit %>
   <% end %>
+
+  <% if @post.user_id == @current_user %>
+    <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+  <%= form_for @post do |f| %>
+    <%= f.text_field :content, placeholder: 'add comment...' %>
+    <%= f.submit %>
+  <% end %>
+
   <button class="glyphicon glyphicon-heart-empty"></button>
   <button class="glyphicon glyphicon-cutlery"></button>
   <button class="glyphicon glyphicon-sunglasses"></button>
-  <button>add comment</button>
+  <%= button_to "add comment", new_post_comment_path(@post.id), :method => 'create' %>
+
 </p>
 
 <!-- glyphicon glyphicon-heart -->
