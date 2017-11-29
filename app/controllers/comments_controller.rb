@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new comment_params
 
       if @comment.save
+        @post.comments << @comment
         redirect_to post_comments_path
     else
       flash[:alert] = "Check the comment form, something went horribly wrong."
@@ -17,9 +18,12 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def show
     @comment = Post.find(params[:id])
+  end
+
+  def index
+    @comment = Comment.all.order(:created_at)
   end
 
   def destroy

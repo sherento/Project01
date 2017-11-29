@@ -6,11 +6,12 @@
 #  name            :text
 #  email           :text
 #  profile         :text
-#  image           :text
+#  header          :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  admin           :boolean          default(FALSE)
+#  picture         :string
 #
 
 class User < ApplicationRecord

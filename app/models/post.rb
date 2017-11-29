@@ -3,10 +3,13 @@
 # Table name: posts
 #
 #  id         :integer          not null, primary key
-#  image      :text
-#  comment    :text
+#  title      :text
+#  photograph :text
+#  caption    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  picture    :string
+#  user_id    :integer
 #
 
 class Post < ApplicationRecord

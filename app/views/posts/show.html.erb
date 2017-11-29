@@ -1,50 +1,50 @@
 <h2>posts..</h2>
 
-<p>
+<div>
   <strong>Title:</strong>
   <%= @post.title %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Image:</strong>
   <% if @post.photograph.nil? %>
     <%= image_tag 'default-post.jpg', :size => '200x200' %>
   <% else %>
   <%= image_tag(@post.photograph) %>
   <% end %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Description:</strong>
   <%= @post.caption %>
-</p>
+</div>
 
-<p>
-  <strong>Comments</strong>
-  <%= form_for [@post, @post.comments.new] do |f| %>
-    <%= f.text_field :content, placeholder: 'Add a comment...' %>
-    <%= f.submit %>
+<div>
+  <strong>Comments:</strong> <br>
+
+  <% @post.comments.each do |comment| %>
+    <%= comment.content %>
   <% end %>
 
+<br>
+    <button class="glyphicon glyphicon-heart-empty"></button>
+    <button class="glyphicon glyphicon-cutlery"></button>
+    <button class="glyphicon glyphicon-sunglasses"></button>
+
+  <%= form_for [@post, @post.comments.new] do |f| %>
+    <%= f.text_field :content, placeholder: 'add a comment...' %>
+    <%= f.submit 'add comment', :class => "btn btn-danger" %>
+  <% end %>
+</div>
+
+
+<div>
   <% if @post.user_id == @current_user %>
     <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
-
-  <%= form_for @post do |f| %>
-    <%= f.text_field :content, placeholder: 'add comment...' %>
-    <%= f.submit %>
-  <% end %>
-
-  <button class="glyphicon glyphicon-heart-empty"></button>
-  <button class="glyphicon glyphicon-cutlery"></button>
-  <button class="glyphicon glyphicon-sunglasses"></button>
-  <%= button_to "add comment", new_post_comment_path(@post.id), :method => 'create' %>
-
-</p>
+</div>
 
 <!-- glyphicon glyphicon-heart -->
-
-
 
 <% if @post.user.id == @current_user.id %>
   <%= link_to 'edit', edit_post_path(@post.id) %>

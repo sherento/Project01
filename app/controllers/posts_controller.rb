@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
-
   end
 
   def create
@@ -28,9 +27,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    user = @current_user
+    @post = @current_user.posts
     if @post.update post_params
-      redirect_to post_path(@post.id)
+      redirect_to post_path
     else
       flash.now[:alert] = "Update failed. Please check the form."
       render :edit

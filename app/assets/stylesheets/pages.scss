@@ -1,3 +1,28 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//home page
+
+@import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
+
+.polaroid {
+  position: relative;
+  width: 220px;
+}
+
+.polaroid img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+
+.polaroid p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 0px;
+  font-family: 'Kalam', cursive;
+  color: #888;
+}
