@@ -23,7 +23,7 @@
   <strong>Comments:</strong> <br>
 
   <% @post.comments.each do |comment| %>
-    
+    <%= User.all.find(comment.user_id).name %>
     <%= comment.content %>
     <br>
   <% end %>
@@ -33,12 +33,15 @@
     <button class="glyphicon glyphicon-cutlery"></button>
     <button class="glyphicon glyphicon-sunglasses"></button>
 
+<% if @current_user.present? %>
   <%= form_for [@post, @post.comments.new] do |f| %>
     <%= f.text_field :content, placeholder: 'add a comment...' %>
     <%= f.submit 'add comment', :class => "btn btn-danger" %>
   <% end %>
+  <% else %>
+    <%= link_to 'login', login_path %>
+  <% end %>
 </div>
-
 
 <div>
   <% if @post.user_id == @current_user %>

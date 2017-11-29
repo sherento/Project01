@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20171127024701) do
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 20171127024701) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
-    t.string "picture"
   end
 
   add_foreign_key "comments", "posts"
