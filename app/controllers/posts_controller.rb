@@ -12,7 +12,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    cloudinary = Cloudinary::Uploader.upload( params[ "post" ][ "photograph" ] )
+
     @post = Post.new post_params
+    @post.photograph = cloudinary['url']
     if @post.save
       @current_user.posts << @post
       redirect_to user_path(@current_user.id)

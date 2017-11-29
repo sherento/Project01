@@ -4,8 +4,8 @@
     <title>Project01</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,17 +14,20 @@
   <body>
     <div class="container">
       <nav>
-         <%= link_to 'home', root_path %>
+         <%= link_to 'home', root_path, :class => "links" %>
            |
          <% if @current_user.present? %>
-          <%= link_to "profile", user_path(@current_user.id) %>
+          <%= link_to "profile", user_path(@current_user.id), :class => "links" %>
             |
-          <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+          <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete', :class => "links" %>
          <% else %>
-           <%= link_to 'sign up', new_user_path %>
+           <%= link_to 'sign up', new_user_path, :class => "links" %>
             |
-           <%= link_to 'login', login_path %>
+           <%= link_to 'login', login_path, :class => "links" %>
          <% end %>
+         |
+         <%= image_tag "home/logo.png", :class => "logo" %>
+
       </nav>
     </div>
     <%= yield %>

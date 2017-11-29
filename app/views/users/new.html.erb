@@ -8,19 +8,28 @@
   </ol>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :class => "form-horizontal" do |f| %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => "form-control" %>
+  </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control" %>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "sign up" %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "form-control" %>
+  </div>
+  
+  <label></label>
+  <div class="button" style="text-align: center">
+  <%= f.submit "sign me up!", :class => "btn btn-info" %>
 <% end %>

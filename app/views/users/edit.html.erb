@@ -1,15 +1,21 @@
 <h1>Update details</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => { :multipart => true}, :class => "form-horizontal" do |f| %>
+  <br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :profile %>
-  <%= f.text_field :profile %>
-
-  <%= f.label :header %>
-  <%= f.text_field :header %>
-
-  <%= f.submit %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => "form-control" %>
+  <br>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :profile %>
+    <%= f.file_field :profile, :class => "form-control" %>
+  <br>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= f.label :header %>
+    <%= f.file_field :header, :class => "form-control" %>
+  <br>
+  <label></label>
+  <div class="button" style="text-align: center">
+    <%= f.submit "update me!", :class => "btn btn-info" %>
 <% end %>

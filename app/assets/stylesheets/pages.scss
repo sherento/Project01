@@ -4,10 +4,15 @@
 //home page
 
 @import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
 
-.polaroid {
-  position: relative;
-  width: 220px;
+
+h1 {
+  font-size: 65px;
+  text-align: center;
+  color: #04f2da;
+  font-family: 'Kalam', cursive;
 }
 
 .polaroid img {
@@ -23,6 +28,13 @@
   text-align: center;
   width: 100%;
   bottom: 0px;
-  font-family: 'Kalam', cursive;
+  font-family: 'Caveat Brush', cursive;
   color: #888;
+  font-size: 25px;
+}
+
+h4 {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: #01050f
 }

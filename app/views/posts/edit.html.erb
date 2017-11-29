@@ -2,7 +2,7 @@
 
 <% if @post.id == @current_user.id %>
 
-  <%= form_for(@post) do |f| %>
+  <%= form_for @post, :class => "form-horizontal" do |f| %>
 
     <% if @post.errors.any? %>
       <div id="error_explanation">
@@ -15,26 +15,28 @@
       </div>
     <% end %>
 
-    <fieldset class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </fieldset>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+      <%= f.label :title %> <br>
+      <%= f.text_field :title, nil, :class => "form-control" %>
+  </div>
 
-    <fieldset class="field">
-      <%= f.label :image %><br>
-      <%= f.file_field :image %>
-    </fieldset>
+<div class="form-group" style="margin: 0 auto; max-width: 400px">
+      <%= f.label :image %> <br>
+      <%= f.file_field :image, nil, :class => "form-control" %>
+</div>
 
-    <fieldset class="field">
-      <%= f.label :caption %><br>
-      <%= f.text_area :caption %>
-    </fieldset>
+<div class="form-group" style="margin: 0 auto; max-width: 400px">
+      <%= f.label :caption %> <br>
+      <%= f.text_area :caption, nil, :class => "form-control" %>
+</div>
 
+<label></label>
+<div class="button" style="text-align: center">
     <fieldset class="actions">
       <label></label>
       <%= f.submit 'update me!'%>
     </fieldset>
-
+</div>
 
   <% end %>
 <% end %>

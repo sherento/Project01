@@ -30,7 +30,15 @@ class UsersController < ApplicationController
   end
 
   def update
+
     user = @current_user
+
+    cloudinary1 = Cloudinary::Uploader.upload( params[ "user" ][ "profile" ] )
+    cloudinary2 = Cloudinary::Uploader.upload( params[ "user" ][ "header" ] )
+    params["user"]["profile"] = cloudinary1['url']
+    params["user"]["header"] = cloudinary2['url']
+
+
     user.update user_params
     redirect_to user_path
   end

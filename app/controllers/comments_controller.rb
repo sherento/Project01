@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
       if @comment.save
         @post.comments << @comment
-        redirect_to post_comments_path
+        redirect_to post_path(@post)
     else
       flash[:alert] = "Check the comment form, something went horribly wrong."
       redirect_to posts_path(@post.id)

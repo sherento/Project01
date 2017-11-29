@@ -3,12 +3,18 @@
 
 <%= flash[:error] %>
 
-<%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
+<%= form_tag login_path, :class => "form-horizontal" do %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, nil, :class => "form-control" %>
+  </div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
-  <%= submit_tag "login" %>
+  <div class="form-group" style="margin: 0 auto; max-width: 400px">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, :class => "form-control" %>
+  </div>
+<label></label>
+<div class="button" style="text-align: center">
+  <%= submit_tag "get me in!", :class => "btn btn-info" %>
+</div>
 <% end %>

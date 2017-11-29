@@ -1,29 +1,36 @@
 <h1>Profile Page</h1>
 
-<h2></h2>
+<nav>
+  <% if @current_user.present? %>
+    <div class="user-links" >
+       <%= link_to "edit profile", edit_user_path(@current_user) %>
+    </div>
+     |
+     <div class="user-links" >
+       <%= link_to "new post", new_post_path %>
+     </div>
+     |
+     <div class="user-links" >
+       <%= link_to "other users", users_path %>
+     </div>
+     |
+     <div class="user-links" >
+       <%= link_to "other posts", posts_path %>
+     </div>
 
-<% if @current_user.present? %>
-
- <%= link_to "edit profile", edit_user_path(@current_user) %>
- |
- <%= link_to "new post", new_post_path %>
- |
- <%= link_to "other users", users_path %>
- |
- <%= link_to "other posts", posts_path %>
-
-<% else %>
-
-  <%= link_to 'login', login_path %>
-
-<% end %>
+    <% else %>
+    <div class="user-links" >
+      <%= link_to 'login', login_path %>
+    </div>
+  <% end %>
+</nav>
 
 <br>
 
 <% if @user.header.nil? %>
   <%= image_tag 'default-header.jpg'  %>
 <% else %>
-  <%= image_tag @user.header, :size => '600x600' %>
+  <%= image_tag @user.header %>
 <% end %>
 
 <br>
