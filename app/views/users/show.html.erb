@@ -1,5 +1,4 @@
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <nav>
     <div class="profile-links">
@@ -79,38 +78,20 @@
                 </div>
         </div>
 
-        <!-- ##
-<div class="row">
-  <% @user.posts.each do |post| %>
 
-    <div class="col-md-6">
-      <div class="polaroid">
-        <% next if post.user_id.nil? %>
 
-          <p><%= link_to post.title, post_path(post) %></p>
-          <%= image_tag post.photograph, :class => "img-responsive" %>
-        <% end %>
-      </div>
-    </div>
+<% next if post.user_id.nil? %>
+    <div class="row">
+      <% @user.posts.each do |post| %>
+        <div class="col-md-6">
+          <div class="polaroid">
+              <p><%= link_to post.title, post_path(post) %></p>
+              <%= image_tag post.photograph, :class => "img-responsive" %>
+            <% end %>
+          </div>
+        </div>
   <% end %>
 </div>
- -->
-
-        <div class="card">
-            <% @user.posts.each do |post| %>
-                <div class="card-image waves-effect waves-block waves-light">
-                    <% next if post.user_id.nil? %>
-                        <%= image_tag post.photograph, :class => "activator" %>
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4"><%= link_to post.title, post_path(post) %>
-          <i class="material-icons right"></i></span>
-                    <p>
-                        <%= link_to post.title, post_path(post) %>
-                    </p>
-                </div>
-        </div>
-
 
         <% if @user.id != @current_user.id %>
             <% if current_user_is_following(@current_user.id, @user.id) %>
