@@ -1,96 +1,95 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <nav class="home-links" style="font-size: 20px; color: black; text-align: right; padding: 0 20px;
+<nav class="home-links" style="font-size: 20px; color: black; text-align: right; padding: 0 20px;
      padding: 0 20px; font-family: 'Kalam', cursive">
-     <%= link_to 'home', root_path %>
-   </div>
-       |
-     <% if @current_user.present? %>
-     <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+    <%= link_to 'home', root_path %>
+        </div>
+        |
+        <% if @current_user.present? %>
+            <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
        padding: 0 20px; font-family: 'Kalam', cursive">
-      <%= link_to "profile", user_path(@current_user.id) %>
-    </div>
-        |
-    <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
       padding: 0 20px; font-family: 'Kalam', cursive">
-      <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
-    </div>
-     <% else %>
-     <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            <% else %>
+                <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
       padding: 0 20px; font-family: 'Kalam', cursive">
-       <%= link_to 'sign up', new_user_path %>
-    </div>
-        |
-    <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                |
+                <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
           padding: 0 20px; font-family: 'Kalam', cursive">
-       <%= link_to 'login', login_path, :class => "links" %>
+                    <%= link_to 'login', login_path, :class => "links" %>
+                </div>
+                <% end %>
+                    |
+                    <%= image_tag "home/logo.png", :class => "logo"%>
+</nav>
+
+
+<h1>heimat</h1>
+
+<div class="row">
+
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 20px">
+            <p>food</p>
+            <%= link_to image_tag("food/food-home.jpg"), home_food_path, :class => "img-responsive",
+            :alt => "some bright coloured fruits, not quite food but i like the simple artistic colours" %>
+        </div>
     </div>
-     <% end %>
-     |
-       <%= image_tag "home/logo.png", :class => "logo"%>
-  </nav>
 
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
+            <p>travel</p>
+            <%= link_to image_tag("travel/travel-home.jpg"), home_travel_path, :class => "img-responsive",
+            :alt => "breathtaking view of the ocean, great holiday destination" %>
+        </div>
+    </div>
 
-    <h1>heimat</h1>
-
-<div class="row">
-
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 20px">
-        <p>food</p>
-        <%= link_to image_tag("food/food-home.jpg"), home_food_path, :class => "img-responsive" %>
-      </div>
-  </div>
-
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
-        <p>travel</p>
-        <%= link_to image_tag("travel/travel-home.jpg"), home_travel_path, :class => "img-responsive" %>
-      </div>
-  </div>
-
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 20px">
-        <p>animals</p>
-        <%= link_to image_tag("animals/animals-home.jpg"), home_animal_path, :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 20px">
+            <p>animals</p>
+            <%= link_to image_tag("animals/animals-home.jpg"), home_animal_path, :class => "img-responsive",
+            :alt => "cute mini piglet i named bacon" %>
+        </div>
+    </div>
 
 </div>
 
 <div class="row">
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 20px">
-        <p>home decor</p>
-        <%= image_tag "decor/decor-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 20px">
+            <p>home decor</p>
+            <%= link_to image_tag("decor/decor-home.jpg"), home_decor_path, :class => "img-responsive",
+            :alt => "some simple home decor from kmart" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
-        <p>plants</p>
-        <%= image_tag "plants/plant-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
+            <p>plants</p>
+            <%= link_to image_tag("plants/plant-home.jpg"), home_plant_path, :class => "img-responsive",
+            :alt => "a beautiful lavender field to roll around in but might have too many bees" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 20px">
-        <p>other</p>
-        <%= image_tag "everything/other-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 20px">
+            <p>other</p>
+            <%= link_to image_tag("everything/other-home.jpg"), home_other_path, :class => "img-responsive",
+            :alt => "an artistic black and white photo of a flower, i think lotus" %>
+        </div>
+    </div>
 
 </div>
 <br>
 <br>
 
-<h4>Heimat is German for the place we're connected to that shaped who we are. <br>
-Most of us associate who we are with where we come from. <br>
-The food, the music, the art, friends, family, school, childhood memories and adulthood experiences, <br>
-all stem from the place we call home. <br>
-Heimat refers to the place that makes us who we are. <br>
-It refers to the attitudes and beliefs we’ve formed that have evolved over generations. <br>
-It doesn’t refer to just homeland pride, but our roots.<br>
+<h4>Heimat is German for the place we're connected to that shaped who we are. <br> Most of us associate who we are with where we come from. <br> The food, the music, the art, friends, family, school, childhood memories and adulthood experiences, <br> all stem from the place we call home. <br> Heimat refers to the place that makes us who we are. <br> It refers to the attitudes and beliefs we’ve formed that have evolved over generations. <br> It doesn’t refer to just homeland pride, but our roots.<br>
 </h4>
