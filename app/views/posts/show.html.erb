@@ -1,58 +1,60 @@
+
+
 <h2>posts..</h2>
 
 <div>
-  <strong>Title:</strong>
-  <%= @post.title %>
+    <strong>Title:</strong>
+    <%= @post.title %>
 </div>
 
 <div>
-  <strong>Image:</strong>
-  <% if @post.photograph.nil? %>
-    <%= image_tag 'default-post.jpg', :size => '200x200' %>
-  <% else %>
-  <%= image_tag(@post.photograph) %>
-  <% end %>
+    <strong>Image:</strong>
+    <% if @post.photograph.nil? %>
+        <%= image_tag 'default-post.jpg', :size => '200x200' %>
+            <% else %>
+                <%= image_tag(@post.photograph) %>
+                    <% end %>
 </div>
 
 <div>
-  <strong>Description:</strong>
-  <%= @post.caption %>
+    <strong>Description:</strong>
+    <%= @post.caption %>
 </div>
 
 <div>
-  <strong>Comments:</strong> <br>
+    <strong>Comments:</strong> <br>
 
-  <% @post.comments.each do |comment| %>
-    <%= User.all.find(comment.user_id).name %>
-    <%= comment.content %>
-    <br>
-  <% end %>
+    <% @post.comments.each do |comment| %>
+        <%= User.all.find(comment.user_id).name %>
+            <%= comment.content %>
+                <br>
+                <% end %>
 
-<br>
-    <button class="glyphicon glyphicon-heart-empty"></button>
-    <button class="glyphicon glyphicon-cutlery"></button>
-    <button class="glyphicon glyphicon-sunglasses"></button>
+                    <br>
+                    <button class="glyphicon glyphicon-heart-empty"></button>
+                    <button class="glyphicon glyphicon-cutlery"></button>
+                    <button class="glyphicon glyphicon-sunglasses"></button>
 
-<% if @current_user.present? %>
-  <%= form_for [@post, @post.comments.new] do |f| %>
-    <%= f.text_field :content, placeholder: 'add a comment...' %>
-    <%= f.submit 'add comment', :class => "btn btn-danger" %>
-  <% end %>
-  <% else %>
-    <%= link_to 'login', login_path %>
-  <% end %>
+                    <% if @current_user.present? %>
+                        <%= form_for [@post, @post.comments.new] do |f| %>
+                            <%= f.text_field :content, placeholder: 'add a comment...' %>
+                                <%= f.submit 'add comment', :class => "btn btn-danger" %>
+                                    <% end %>
+                                        <% else %>
+                                            <%= link_to 'login', login_path %>
+                                                <% end %>
 </div>
 
 <div>
-  <% if @post.user_id == @current_user %>
-    <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
+    <% if @post.user_id == @current_user %>
+        <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            <% end %>
 </div>
 
 <!-- glyphicon glyphicon-heart -->
 
 <% if @post.user.id == @current_user.id %>
-  <%= link_to 'edit', edit_post_path(@post.id) %>
-  |
-  <%= link_to 'delete', post_path(@post.id), :method => 'delete'  %>
-<% end %>
+    <%= link_to 'edit', edit_post_path(@post.id) %>
+        |
+        <%= link_to 'delete', post_path(@post.id), :method => 'delete'  %>
+            <% end %>

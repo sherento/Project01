@@ -1,82 +1,81 @@
-
 <nav>
-<div class="profile-links">
-  <% if @current_user.present? %>
+    <div class="profile-links">
+        <% if @current_user.present? %>
 
-    <div class="user-links" >
-      <%= link_to 'home', root_path %>
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            <% else %>
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                <% end %>
+                    |
     </div>
-       |
-    <div class="user-links" >
-      <%= link_to "profile", user_path(@current_user.id) %>
-    </div>
-        |
-    <div class="user-links" >
-      <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
-    </div>
-     <% else %>
-    <div class="user-links" >
-       <%= link_to 'sign up', new_user_path %>
-    </div>
-        |
-    <div class="user-links" >
-       <%= link_to 'login', login_path %>
-    </div>
-     <% end %>
-     |
-  </div>
-   <%= image_tag "home/logo.png", :class => "logo" %>
+    <%= image_tag "home/logo.png", :class => "logo" %>
 </nav>
 
 
-    <h1>plants</h1>
+<h1>plants</h1>
 
 <div class="row">
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 60px; margin-top: 60px">
-        <p>autumn time</p>
-        <%= image_tag "plants/plant-1.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 60px; margin-top: 60px">
+            <p>autumn time</p>
+            <%= image_tag "plants/plant-1.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
-        <p>pretty</p>
-        <%= image_tag "plants/plant-6.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
+            <p>pretty</p>
+            <%= image_tag "plants/plant-6.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 70px; margin-top: 50px">
-        <p>peaceful tree</p>
-        <%= image_tag "plants/plant-2.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 70px; margin-top: 50px">
+            <p>peaceful tree</p>
+            <%= image_tag "plants/plant-2.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
 </div>
 
 <div class="row">
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 80px; margin-top: 50px">
-        <p>i'm growing!</p>
-        <%= image_tag "plants/plant-4.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 80px; margin-top: 50px">
+            <p>i'm growing!</p>
+            <%= image_tag "plants/plant-4.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 50px; margin-left: 20px">
-        <p>spiral</p>
-        <%= image_tag "plants/plant-5.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 50px; margin-left: 20px">
+            <p>spiral</p>
+            <%= image_tag "plants/plant-5.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
-  <div class="col-xs-6 col-md-4">
-      <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 50px; margin-right: 80px">
-        <p>tulips!</p>
-        <%= image_tag "plants/plant-3.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-      </div>
-  </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 50px; margin-right: 80px">
+            <p>tulips!</p>
+            <%= image_tag "plants/plant-3.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        </div>
+    </div>
 
 </div>

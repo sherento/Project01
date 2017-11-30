@@ -1,54 +1,52 @@
-
-
 <nav class="edit-nav">
-  <div class="profile-links">
+    <div class="profile-links">
 
-  <% if @current_user.present? %>
-      <div class="user-links" >
-        <%= link_to 'home', root_path %>
-      </div>
-       |
-      <div class="user-links" >
-        <%= link_to "profile", user_path(@current_user.id) %>
-      </div>
-        |
-      <div class="user-links" >
-        <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
-      </div>
-        |
-     <% else %>
-     <div class="user-links" >
-       <%= link_to 'login', login_path %>
-     </div>
-       |
-      <div class="user-links" >
-         <%= link_to 'sign up', new_user_path %>
-      </div>
-       <% end %>
+        <% if @current_user.present? %>
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            |
+            <% else %>
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                <% end %>
 
     </div>
-     <%= image_tag "home/logo.png", :class => "logo" %>
-  </nav>
+    <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
 
 
 <h1>Update details</h1>
 
 <%= form_for @user, :html => { :multipart => true}, :class => "form-horizontal" do |f| %>
-  <br>
+    <br>
 
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <%= f.label :email %>
-    <%= f.email_field :email, :class => "form-control" %>
-  <br>
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <%= f.label :profile %>
-    <%= f.file_field :profile, :class => "form-control" %>
-  <br>
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <%= f.label :header %>
-    <%= f.file_field :header, :class => "form-control" %>
-  <br>
-  <label></label>
-  <div class="button" style="text-align: center">
-    <%= f.submit "update me!", :class => "btn btn-info" %>
-<% end %>
+    <div class="form-group" style="margin: 0 auto; max-width: 400px">
+        <%= f.label :email %>
+            <%= f.email_field :email, :class => "form-control" %>
+                <br>
+                <div class="form-group" style="margin: 0 auto; max-width: 400px">
+                    <%= f.label :profile %>
+                        <%= f.file_field :profile, :class => "form-control" %>
+                            <br>
+                            <div class="form-group" style="margin: 0 auto; max-width: 400px">
+                                <%= f.label :header %>
+                                    <%= f.file_field :header, :class => "form-control" %>
+                                        <br>
+                                        <label></label>
+                                        <div class="button" style="text-align: center">
+                                            <%= f.submit "update me!", :class => "btn btn-info" %>
+                                                <% end %>

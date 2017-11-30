@@ -1,71 +1,70 @@
 
-
 <nav class="edit-nav">
-  <div class="profile-links">
+    <div class="profile-links">
 
-  <% if @current_user.present? %>
-      <div class="user-links" >
-        <%= link_to 'home', root_path %>
-      </div>
-       |
-      <div class="user-links" >
-        <%= link_to "profile", user_path(@current_user.id) %>
-      </div>
-        |
-      <div class="user-links" >
-        <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
-      </div>
-        |
-     <% else %>
-     <div class="user-links" >
-       <%= link_to 'login', login_path %>
-     </div>
-       |
-      <div class="user-links" >
-         <%= link_to 'sign up', new_user_path %>
-      </div>
-       <% end %>
+        <% if @current_user.present? %>
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            |
+            <% else %>
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                <% end %>
 
     </div>
-     <%= image_tag "home/logo.png", :class => "logo" %>
-  </nav>
+    <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
 
 
 <h1>Make a new post</h1>
 
 <% if @current_user %>
 
-  <%= form_for @post, :html => {:multipart => true}, :class => "form-horizontal" do |f| %>
-  <br>
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <fieldset class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, :class => "form-control" %>
-    </fieldset>
-  </div>
-    <br>
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <fieldset class="field">
-      <%= f.label :photograph %><br>
-      <%= f.file_field :photograph, :class => "form-control" %>
-    </fieldset>
-  </div>
-    <br>
-  <div class="form-group" style="margin: 0 auto; max-width: 400px">
-    <fieldset class="field">
-      <%= f.label :caption %><br>
-      <%= f.text_field :caption, :class => "form-control" %>
-    </fieldset>
-  </div>
+    <%= form_for @post, :html => {:multipart => true}, :class => "form-horizontal" do |f| %>
+        <br>
+        <div class="form-group" style="margin: 0 auto; max-width: 400px">
+            <fieldset class="field">
+                <%= f.label :title %><br>
+                    <%= f.text_field :title, :class => "form-control" %>
+            </fieldset>
+        </div>
+        <br>
+        <div class="form-group" style="margin: 0 auto; max-width: 400px">
+            <fieldset class="field">
+                <%= f.label :photograph %><br>
+                    <%= f.file_field :photograph, :class => "form-control" %>
+            </fieldset>
+        </div>
+        <br>
+        <div class="form-group" style="margin: 0 auto; max-width: 400px">
+            <fieldset class="field">
+                <%= f.label :caption %><br>
+                    <%= f.text_field :caption, :class => "form-control" %>
+            </fieldset>
+        </div>
 
-  <br>
-  <label></label>
-  <div class="button" style="text-align: center">
-    <fieldset class="actions">
-      <label></label>
-      <%= f.submit 'Post me!', :class => "btn btn-info" %>
-    </fieldset>
-  </div>
+        <br>
+        <label></label>
+        <div class="button" style="text-align: center">
+            <fieldset class="actions">
+                <label></label>
+                <%= f.submit 'Post me!', :class => "btn btn-info" %>
+            </fieldset>
+        </div>
 
-  <% end %>
-<% end %>
+        <% end %>
+            <% end %>

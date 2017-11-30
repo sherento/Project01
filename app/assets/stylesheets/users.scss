@@ -1,44 +1,44 @@
+
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
-.follow-button {
-  text-transform: uppercase;
-  border-color: #4090db;
-  color: #4090db;
-  margin-left: 20px;
-  &:visited, &:focus, &:hover {
-    border-color: #2D6396;
-    color: #2D6396;
-  }
-}
+.follow - button {
+        text - transform: uppercase;
+        border - color: #4090db;
+  color: # 4090 db;
+        margin - left: 20 px; &
+        : visited, &: focus, &: hover {
+            border - color: #2D6396;
+    color: # 2 D6396;
+        }
+    }
 
-.unfollow-button {
-  text-transform: uppercase;
-  border-color: #66bd2b;
-  background-color: #66bd2b;
-  color: white;
-  margin-left: 20px;
-  &:visited, &:focus, &:hover {
-    border-color: #47821F;
-    background-color: #47821F;
-    color: white;
-  }
-}
+    .unfollow - button {
+        text - transform: uppercase;
+        border - color: #66bd2b;
+  background-color: # 66 bd2b;
+        color: white;
+        margin - left: 20 px; &
+        : visited, &: focus, &: hover {
+            border - color: #47821F;
+    background-color: # 47821 F;
+            color: white;
+        }
+    }
 
-.profile-links {
-  font-size: 20px;
-  color: black;
-  padding: 0 20px;
-  display: inline-block;
-  margin: 0 0 20px 80px;
-}
+    .profile - links {
+        font - size: 20 px;
+        color: black;
+        padding: 0 20 px;
+        display: inline - block;
+        margin: 0 0 20 px 80 px;
+    }
 
-.user-links {
-  font-size: 20px;
-  color: #04f2da;
+    .user - links {
+        font - size: 20 px;
+        color: #04f2da;
   text-align: right;
   padding: 0 20px;
   font-family: 'Kalam', cursive;
@@ -53,60 +53,60 @@
 }
 
 nav a {
-  color: #04f2da;
-  text-align: center;
-}
+  color: # 04 f2da;
+        text - align: center;
+    }
 
-.name {
-  font-size: 100px;
-  font-family: 'Shadows Into Light Two', cursive;
-}
+    .name {
+        font - size: 100 px;
+        font - family: 'Shadows Into Light Two', cursive;
+    }
 
 
-.welcome {
-  font-size: 50px;
-  font-family: 'Shadows Into Light Two', cursive;
-  position: absolute;
-  bottom: 150px;
-  right: 450px;
-}
+    .welcome {
+        font - size: 50 px;
+        font - family: 'Shadows Into Light Two', cursive;
+        position: absolute;
+        bottom: 150 px;
+        right: 450 px;
+    }
 
-.profile-pic {
-  width: 250px;
-  height: 250px;
-  border: 5px white;
-  margin: 50px 0 0 50px;
-  border-radius: 50%;
-}
+    .profile - pic {
+        width: 250 px;
+        height: 250 px;
+        border: 5 px white;
+        margin: 50 px 0 0 50 px;
+        border - radius: 50 % ;
+    }
 
-.parent {
-  position: relative;
-}
+    .parent {
+        position: relative;
+    }
 
-.pic {
-  position: absolute;
-  bottom: 30px;
-  right: 50px;
-}
+    .pic {
+        position: absolute;
+        bottom: 30 px;
+        right: 50 px;
+    }
 
-.name {
-  position: absolute;
-  bottom: 40px;
-  right: 500px;
-}
+    .name {
+        position: absolute;
+        bottom: 40 px;
+        right: 500 px;
+    }
 
 nav {
-  text-align: right;
+    text - align: right;
 }
 
 
 .polaroid img {
-  padding-top: 40px;
-  border: 10px solid #fff;
-  border-bottom: 45px solid #fff;
-  -webkit-box-shadow: 3px 3px 3px #777;
-     -moz-box-shadow: 3px 3px 3px #777;
-          box-shadow: 3px 3px 3px #777;
+    padding - top: 40 px;
+    border: 10 px solid# fff;
+    border - bottom: 45 px solid# fff; -
+    webkit - box - shadow: 3 px 3 px 3 px #777;
+     -moz-box-shadow: 3px 3px 3px # 777;
+    box - shadow: 3 px 3 px 3 px #777;
 }
 
 .polaroid p {
@@ -115,6 +115,6 @@ nav {
   width: 100%;
   bottom: 0px;
   font-family: 'Caveat Brush', cursive;
-  color: #888;
-  font-size: 30px;
+  color: # 888;
+    font - size: 30 px;
 }
