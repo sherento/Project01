@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
   get '/home' => 'pages#home'
+  get '/home/food' => 'pages#food'
+  get '/home/animal' => 'pages#animal'
+  get 'home/travel' => 'pages#travel'
+  get 'home/decor'=> 'pages#decor'
+  get 'home/plant' => 'pages#plant'
+  get 'home/other' => 'pages#other'
 
   resources :users
 

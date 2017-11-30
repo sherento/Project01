@@ -1,6 +1,8 @@
-<h1>Profile Page</h1>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <nav>
+<div class="profile-links">
   <% if @current_user.present? %>
     <div class="user-links" >
        <%= link_to "edit profile", edit_user_path(@current_user) %>
@@ -17,43 +19,98 @@
      <div class="user-links" >
        <%= link_to "other posts", posts_path %>
      </div>
-
-    <% else %>
+     |
     <div class="user-links" >
-      <%= link_to 'login', login_path %>
+      <%= link_to 'home', root_path %>
     </div>
-  <% end %>
+       |
+    <div class="user-links" >
+      <%= link_to "profile", user_path(@current_user.id) %>
+    </div>
+        |
+    <div class="user-links" >
+      <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+    </div>
+     <% else %>
+    <div class="user-links" >
+       <%= link_to 'sign up', new_user_path %>
+    </div>
+        |
+    <div class="user-links" >
+       <%= link_to 'login', login_path %>
+    </div>
+     <% end %>
+     |
+  </div>
+   <%= image_tag "home/logo.png", :class => "logo" %>
 </nav>
 
-<br>
-
+<div class="parent">
 <% if @user.header.nil? %>
-  <%= image_tag 'default-header.jpg'  %>
+  <div class="banner" style="width: 100vw; height: 90vh; clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+  background-size: cover; margin: 0 auto;
+  background-image: url(<%= asset_path 'default-header.jpg' %>)">
 <% else %>
-  <%= image_tag @user.header %>
+  <div class="banner" style="width: 100vw; height: 90vh; clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+  background-size: cover; margin: 0 auto;
+  background-image: url(<%= @user.header %>)">
 <% end %>
 
-<br>
+  <div class="pic">
+    <% if @user.profile.nil? %>
+      <%= image_tag 'default-profile.png', :class => "profile-pic" %>
+    <% else %>
+      <%= image_tag @user.profile, :class => "profile-pic" %>
+    <% end %>
+  </div>
 
-<% if @current_user.present? && @user.id == @current_user.id %>
-  welcome back <%= @user.name %>
-<% else %>
-  <%= @user.name %>
-<% end %>
+  <div class="welcome">
+  <% if @current_user.present? && @user.id == @current_user.id %>
+    welcome back
+  </div>
 
-<% if @user.profile.nil? %>
-  <%= image_tag 'default-profile.png', :size => '50x50' %>
-<% else %>
-  <%= image_tag @user.profile, :size => '50x50' %>
-<% end %>
+  <div class="name">
+    <%= @user.name %>
+  </div>
+  <% else %>
+    <%= @user.name %>
+  <% end %>
 
-<% @user.posts.each do |post| %>
-  <p><%= link_to post.title, post_path(post) %></p>
-<% end %>
+  </div>
+</div>
 
-<% if @user.id == @current_user.id %>
-  <!-- <%= link_to 'Edit Profile', edit_user_path(@current_user.id), class: 'btn edit-button' %> -->
-<% else %>
+##
+<div class="row">
+  <% @user.posts.each do |post| %>
+
+    <div class="col-md-6">
+      <div class="polaroid">
+        <% next if post.user_id.nil? %>
+
+          <p><%= link_to post.title, post_path(post) %></p>
+          <%= image_tag post.photograph, :class => "img-responsive" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="card">
+  <% @user.posts.each do |post| %>
+    <div class="card-image waves-effect waves-block waves-light">
+      <% next if post.user_id.nil? %>
+        <%= image_tag post.photograph, :class => "activator" %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= link_to post.title, post_path(post) %>
+          <i class="material-icons right"></i></span>
+        <p><%= link_to post.title, post_path(post) %></p>
+      </div>
+</div>
+
+
+<% if @user.id != @current_user.id %>
   <% if current_user_is_following(@current_user.id, @user.id) %>
     <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
   <% else %>

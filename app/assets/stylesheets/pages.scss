@@ -6,16 +6,27 @@
 @import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
 @import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
 @import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
+
+.logo {
+  border-radius: 60px 30px;
+  width: 15vw;
+  padding: 10px 20px;
+  display: inline-block;
+}
 
 h1 {
-  font-size: 65px;
+  font-size: 100px;
   text-align: center;
   color: #04f2da;
   font-family: 'Kalam', cursive;
+  text-shadow: 2px 2px 8px black;
+  padding: 0 300px;
 }
 
 .polaroid img {
+  padding-top: 40px;
   border: 10px solid #fff;
   border-bottom: 45px solid #fff;
   -webkit-box-shadow: 3px 3px 3px #777;
@@ -30,11 +41,13 @@ h1 {
   bottom: 0px;
   font-family: 'Caveat Brush', cursive;
   color: #888;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 h4 {
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-  color: #01050f
+  font-family: 'Caveat Brush', cursive;
+  font-size: 30px;
+  color: #01050f;
+  margin-left: 40px;
+  margin-bottom: 20px;
 }

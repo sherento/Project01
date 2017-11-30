@@ -1,7 +1,56 @@
+
+
+<nav>
+<div class="profile-links">
+  <% if @current_user.present? %>
+
+     <div class="user-links" >
+       <%= link_to "other posts", posts_path %>
+     </div>
+     |
+    <div class="user-links" >
+      <%= link_to 'home', root_path %>
+    </div>
+       |
+    <div class="user-links" >
+      <%= link_to "profile", user_path(@current_user.id) %>
+    </div>
+        |
+    <div class="user-links" >
+      <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+    </div>
+     <% else %>
+    <div class="user-links" >
+       <%= link_to 'sign up', new_user_path %>
+    </div>
+        |
+    <div class="user-links" >
+       <%= link_to 'login', login_path %>
+    </div>
+     <% end %>
+     |
+  </div>
+   <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
+
+
 <h1>others you may like to follow..</h1>
 
-<% @users.each do |user| %>
-  <% next if user.id == @current_user.id %>
-  <%= link_to user.name, user_path(user.id) %><br>
-  <%= user.profile %>
-<% end %>
+<div class="row">
+  <% @users.each do |user| %>
+    <% next if user.id == @current_user.id %>
+
+  <div class="col-xs-6 col-md-4">
+      <div class="polaroid" style="width: 25vw; padding: 5px; margin: 0 auto">
+        <% if user.profile.nil? %>
+        <p><%= link_to user.name, user_path(user.id) %></p>
+        <%= image_tag 'default-profile.png', :class => "img-responsive"%>
+      <% else %>
+        <p><%= link_to user.name, user_path(user.id) %></p>
+        <%= image_tag user.profile, :class => "img-responsive" %>
+      <% end %>
+      </div>
+  </div>
+
+  <% end %>
+</div>

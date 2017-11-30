@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
+
 .follow-button {
   text-transform: uppercase;
   border-color: #4090db;
@@ -26,22 +28,93 @@
   }
 }
 
-nav {
+.profile-links {
   font-size: 20px;
   color: black;
-  text-align: right;
   padding: 0 20px;
+  display: inline-block;
+  margin: 0 0 20px 80px;
 }
 
 .user-links {
   font-size: 20px;
   color: #04f2da;
-  text-align: center;
+  text-align: right;
   padding: 0 20px;
   font-family: 'Kalam', cursive;
   display: inline-block;
 }
 
+.logo {
+  border-radius: 60px 30px;
+  width: 15vw;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
 nav a {
   color: #04f2da;
+  text-align: center;
+}
+
+.name {
+  font-size: 100px;
+  font-family: 'Shadows Into Light Two', cursive;
+}
+
+
+.welcome {
+  font-size: 50px;
+  font-family: 'Shadows Into Light Two', cursive;
+  position: absolute;
+  bottom: 150px;
+  right: 450px;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  border: 5px white;
+  margin: 50px 0 0 50px;
+  border-radius: 50%;
+}
+
+.parent {
+  position: relative;
+}
+
+.pic {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+
+.name {
+  position: absolute;
+  bottom: 40px;
+  right: 500px;
+}
+
+nav {
+  text-align: right;
+}
+
+
+.polaroid img {
+  padding-top: 40px;
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+
+.polaroid p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 0px;
+  font-family: 'Caveat Brush', cursive;
+  color: #888;
+  font-size: 30px;
 }

@@ -12,24 +12,9 @@
   </head>
 
   <body>
-    <div class="container">
-      <nav>
-         <%= link_to 'home', root_path, :class => "links" %>
-           |
-         <% if @current_user.present? %>
-          <%= link_to "profile", user_path(@current_user.id), :class => "links" %>
-            |
-          <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete', :class => "links" %>
-         <% else %>
-           <%= link_to 'sign up', new_user_path, :class => "links" %>
-            |
-           <%= link_to 'login', login_path, :class => "links" %>
-         <% end %>
-         |
-         <%= image_tag "home/logo.png", :class => "logo" %>
 
-      </nav>
-    </div>
+
+
     <%= yield %>
   </body>
 </html>

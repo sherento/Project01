@@ -1,12 +1,36 @@
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> heimat homepage</title>
-  </head>
-  <body>
+  <nav class="home-links" style="font-size: 20px; color: black; text-align: right; padding: 0 20px;
+     padding: 0 20px; font-family: 'Kalam', cursive">
+     <%= link_to 'home', root_path %>
+   </div>
+       |
+     <% if @current_user.present? %>
+     <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+       padding: 0 20px; font-family: 'Kalam', cursive">
+      <%= link_to "profile", user_path(@current_user.id) %>
+    </div>
+        |
+    <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+      padding: 0 20px; font-family: 'Kalam', cursive">
+      <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+    </div>
+     <% else %>
+     <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+      padding: 0 20px; font-family: 'Kalam', cursive">
+       <%= link_to 'sign up', new_user_path %>
+    </div>
+        |
+    <div class="main-links" style="font-size: 20px; color: #04f2da; display: inline-block;
+          padding: 0 20px; font-family: 'Kalam', cursive">
+       <%= link_to 'login', login_path, :class => "links" %>
+    </div>
+     <% end %>
+     |
+       <%= image_tag "home/logo.png", :class => "logo"%>
+  </nav>
+
 
     <h1>heimat</h1>
 
@@ -15,22 +39,21 @@
   <div class="col-xs-6 col-md-4">
       <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 20px">
         <p>food</p>
-        <%= image_tag "food/food-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
-        <!-- image_tag "/assets/images/food/food-home.jpeg" for heroku -->
+        <%= link_to image_tag("food/food-home.jpg"), home_food_path, :class => "img-responsive" %>
       </div>
   </div>
 
   <div class="col-xs-6 col-md-4">
       <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
         <p>travel</p>
-        <%= image_tag "travel/travel-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        <%= link_to image_tag("travel/travel-home.jpg"), home_travel_path, :class => "img-responsive" %>
       </div>
   </div>
 
   <div class="col-xs-6 col-md-4">
       <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 20px">
         <p>animals</p>
-        <%= image_tag "animals/animals-home.jpg", :class => "img-responsive", :alt => "Responsive image" %>
+        <%= link_to image_tag("animals/animals-home.jpg"), home_animal_path, :class => "img-responsive", :alt => "Responsive image" %>
       </div>
   </div>
 
@@ -71,6 +94,3 @@ Heimat refers to the place that makes us who we are. <br>
 It refers to the attitudes and beliefs we’ve formed that have evolved over generations. <br>
 It doesn’t refer to just homeland pride, but our roots.<br>
 </h4>
-
-  </body>
-</html>
