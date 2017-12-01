@@ -1,4 +1,50 @@
 
+
+
+<nav>
+    <div class="profile-links">
+        <% if @current_user.present? %>
+            <div class="user-links">
+                <%= link_to "edit profile", edit_user_path(@current_user) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "new post", new_post_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "other users", users_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "other posts", posts_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            <% else %>
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                <% end %>
+                    |
+    </div>
+    <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
+
 <h1>Update post</h1>
 
 <% if @post.id == @current_user.id %>
@@ -38,7 +84,7 @@
                 <div class="button" style="text-align: center">
                     <fieldset class="actions">
                         <label></label>
-                        <%= f.submit 'update me!'%>
+                        <%= f.submit 'update me!', :class => "btn btn-info" %>
                     </fieldset>
                 </div>
 

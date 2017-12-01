@@ -45,50 +45,37 @@
 </nav>
 
 
-<div class="parent">
-    <% if @user.header.nil? %>
-        <div class="banner" style="width: 100vw; height: 80vh;
-  background-size: cover; margin: 0 auto;
-  background-image: url(<%= asset_path 'default-header.jpg' %>)">
-            <% else %>
-                <div class="banner" style="width: 100vw; height: 80vh;
-  background-size: cover; margin: 0 auto;
-  background-image: url(<%= @user.header %>)">
-                    <% end %>
+<% if @user.header.nil? %>
+    <div class="banner" style="width: 100vw; height: 80vh;
+background-size: cover; margin: 0 auto;
+background-image: url(<%= asset_path 'default-header.jpg' %>)">
+        <% else %>
+            <div class="banner" style="width: 100vw; height: 80vh;
+background-size: cover; margin: 0 auto;
+background-image: url(<%= @user.header %>)">
+        <% end %>
 
-<div class="pic">
-  <% if @user.profile.nil? %>
+<% if @user.profile.nil? %>
     <%= image_tag 'default-profile.jpg', :class => "profile-pic" %>
-  <% else %>
+<% else %>
     <%= image_tag @user.profile, :class => "profile-pic" %>
-  <% end %>
-</div>
+<% end %>
+  </div>
 
   <div class="welcome">
-      <% if @current_user.present? && @user.id == @current_user.id %>
-            
+    <% if @current_user.present? && @user.id == @current_user.id %>
   </div>
-
   <div class="name">
-      <%= @user.name %>
+    <%= @user.name %>
   </div>
-  <% else %>
-      <%= @user.name %>
-  <% end %>
+    <% else %>
+    <%= @user.name %>
+    <% end %>
 
-    <div class="follow">
-      <% if @user.id != @current_user.id %>
-      <% if current_user_is_following(@current_user.id, @user.id) %>
-      <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
-      <% else %>
-        <%= link_to 'Follow', follow_user_path(@user.id), remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
-      <% end %>
-      <% end %>
-    </div>
 
-    </div>
-  </div>
+<div class="parent">
 
+<div class="pic">
 
     <div class="row-user">
       <% @user.posts.each do |post| %>
@@ -109,9 +96,19 @@
           </div>
         </div>
     </div>
+</div>
 
+<div>
+  <% if @user.id != @current_user.id %>
+    <% if current_user_is_following(@current_user.id, @user.id) %>
+    <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
+    <% else %>
+      <%= link_to 'Follow', follow_user_path(@user.id), remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
+    <% end %>
+    <% end %>
+</div>
 
-        <script>
+  <script>
           // Week 7 code below:
           $(document).ready(function() {
           $('.btn.unfollow-button, .btn.follow-button').on('ajax:success', function(response) {
@@ -124,4 +121,4 @@
           }
           });
           })
-        </script>
+  </script>
