@@ -58,7 +58,7 @@
 
 <div class="pic">
   <% if @user.profile.nil? %>
-    <%= image_tag 'default-profile.png', :class => "profile-pic" %>
+    <%= image_tag 'default-profile.jpg', :class => "profile-pic" %>
   <% else %>
     <%= image_tag @user.profile, :class => "profile-pic" %>
   <% end %>
