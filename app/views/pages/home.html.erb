@@ -38,24 +38,24 @@
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 40px;">
             <p>food</p>
-            <%= link_to image_tag("food/food-home.jpg"), home_food_path, :class => "img-responsive",
-            :alt => "some bright coloured fruits, not quite food but i like the simple artistic colours" %>
+            <%= link_to image_tag("food/food-home.jpg", :class => "img-responsive",
+            :alt => "some bright coloured fruits, not quite food but i like the simple artistic colours"), home_food_path %>
         </div>
     </div>
 
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 30px">
             <p>travel</p>
-            <%= link_to image_tag("travel/travel-home.jpg", width: '460vw'), home_travel_path, :class => "img-responsive",
-            :alt => "breathtaking view of the ocean, great holiday destination" %>
+            <%= link_to image_tag("travel/travel-home.jpg", :class => "img-responsive",
+            :alt => "breathtaking view of the ocean, great holiday destination"), home_travel_path %>
         </div>
     </div>
 
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 90px;">
             <p>animals</p>
-            <%= link_to image_tag("animals/animals-home.jpg", width: '450vw'), home_animal_path, :class => "img-responsive",
-            :alt => "cute mini piglet i named bacon" %>
+            <%= link_to image_tag("animals/animals-home.jpg", :class => "img-responsive",
+            :alt => "cute mini piglet i named bacon"), home_animal_path %>
         </div>
     </div>
 
@@ -66,24 +66,24 @@
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-left: 30px">
             <p>home decor</p>
-            <%= link_to image_tag("decor/decor-home.jpg", width: '400vw'), home_decor_path, :class => "img-responsive",
-            :alt => "some simple home decor from kmart" %>
+            <%= link_to image_tag("decor/decor-home.jpg", :class => "img-responsive",
+            :alt => "some simple home decor from kmart"), home_decor_path %>
         </div>
     </div>
 
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-top: 40px">
             <p>plants</p>
-            <%= link_to image_tag("plants/plant-home.jpg", width: '450vw'), home_plant_path, :class => "img-responsive",
-            :alt => "a beautiful lavender field to roll around in but might have too many bees" %>
+            <%= link_to image_tag("plants/plant-home.jpg", :class => "img-responsive",
+            :alt => "a beautiful lavender field to roll around in but might have too many bees"), home_plant_path %>
         </div>
     </div>
 
     <div class="col-xs-6 col-md-4">
         <div class="polaroid" style="transform: rotateZ(<%= rand(-5..5) %>deg); margin-right: 30px">
             <p>other</p>
-            <%= link_to image_tag("everything/other-home.jpg", width: '400vw'), home_other_path, :class => "img-responsive",
-            :alt => "an artistic black and white photo of a flower, i think lotus" %>
+            <%= link_to image_tag("everything/other-home.jpg", :class => "img-responsive",
+            :alt => "an artistic black and white photo of a flower, i think lotus"), home_other_path %>
         </div>
     </div>
 

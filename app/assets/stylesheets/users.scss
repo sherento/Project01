@@ -50,6 +50,7 @@
   width: 15vw;
   padding: 10px 20px;
   display: inline-block;
+  z-index: 1;
 }
 
 nav a {
@@ -67,13 +68,13 @@ nav a {
   font-size: 50px;
   font-family: 'Shadows Into Light Two', cursive;
   position: absolute;
-  bottom: 150px;
-  right: 450px;
+  top: 30px;
+  left: 250px;
   }
 
 .profile-pic {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border: 5px white;
   margin: 50px 0 0 50px;
   border-radius: 50% ;
@@ -81,20 +82,27 @@ nav a {
 
 .parent {
   position: relative;
+  margin-top: 0px;
+
     }
 
 .pic {
   position: absolute;
-  bottom: 30 px;
-  right: 50 px;
-    }
+  top: 0px;
+  left: 0px;
+}
 
 .name {
   position: absolute;
-  bottom: 40 px;
-  right: 500 px;
+  top: 90px;
+  left: 300px;
 }
 
+.follow {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+}
 nav {
     text-align: right;
 }
@@ -117,4 +125,13 @@ nav {
   font-family: 'Caveat Brush', cursive;
   color: #888;
   font-size: 30px;
+}
+
+.img-responsive {
+  width: 30vw;
+  margin-left: 30px;
+}
+
+.row-posts {
+  margin-left: 150px;
 }

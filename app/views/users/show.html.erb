@@ -44,74 +44,84 @@
     <%= image_tag "home/logo.png", :class => "logo" %>
 </nav>
 
+
 <div class="parent">
     <% if @user.header.nil? %>
-        <div class="banner" style="width: 100vw; height: 90vh; clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+        <div class="banner" style="width: 100vw; height: 80vh;
   background-size: cover; margin: 0 auto;
   background-image: url(<%= asset_path 'default-header.jpg' %>)">
             <% else %>
-                <div class="banner" style="width: 100vw; height: 90vh; clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+                <div class="banner" style="width: 100vw; height: 80vh;
   background-size: cover; margin: 0 auto;
   background-image: url(<%= @user.header %>)">
                     <% end %>
 
-                        <div class="pic">
-                            <% if @user.profile.nil? %>
-                                <%= image_tag 'default-profile.png', :class => "profile-pic" %>
-                                    <% else %>
-                                        <%= image_tag @user.profile, :class => "profile-pic" %>
-                                            <% end %>
-                        </div>
-
-                        <div class="welcome">
-                            <% if @current_user.present? && @user.id == @current_user.id %>
-                                welcome back
-                        </div>
-
-                        <div class="name">
-                            <%= @user.name %>
-                        </div>
-                        <% else %>
-                            <%= @user.name %>
-                                <% end %>
-
-                </div>
-        </div>
-
-
-
-<% next if post.user_id.nil? %>
-    <div class="row">
-      <% @user.posts.each do |post| %>
-        <div class="col-md-6">
-          <div class="polaroid">
-              <p><%= link_to post.title, post_path(post) %></p>
-              <%= image_tag post.photograph, :class => "img-responsive" %>
-            <% end %>
-          </div>
-        </div>
+<div class="pic">
+  <% if @user.profile.nil? %>
+    <%= image_tag 'default-profile.png', :class => "profile-pic" %>
+  <% else %>
+    <%= image_tag @user.profile, :class => "profile-pic" %>
   <% end %>
 </div>
 
-        <% if @user.id != @current_user.id %>
-            <% if current_user_is_following(@current_user.id, @user.id) %>
-                <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
-                    <% else %>
-                        <%= link_to 'Follow', follow_user_path(@user.id), remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
-                            <% end %>
-                                <% end %>
+  <div class="welcome">
+      <% if @current_user.present? && @user.id == @current_user.id %>
+            welcome back
+  </div>
 
-                                    <script>
-                                        // Week 7 code below:
-                                        $(document).ready(function() {
-                                            $('.btn.unfollow-button, .btn.follow-button').on('ajax:success', function(response) {
-                                                if ($(this).is('#unfollow-button')) {
-                                                    $('#unfollow-button').text('Follow').attr('class', 'btn follow-button')
-                                                        .attr('href', "/<%= @user.id %>/follow_user").attr('id', 'follow-button');
-                                                } else {
-                                                    $('#follow-button').attr('class', 'btn unfollow-button').text('Following')
-                                                        .attr('href', "/<%= @user.id %>/unfollow_user").attr('id', 'unfollow-button');
-                                                }
-                                            });
-                                        })
-                                    </script>
+  <div class="name">
+      <%= @user.name %>
+  </div>
+  <% else %>
+      <%= @user.name %>
+  <% end %>
+
+    <div class="follow">
+      <% if @user.id != @current_user.id %>
+      <% if current_user_is_following(@current_user.id, @user.id) %>
+      <%= link_to 'Following', unfollow_user_path(@user.id), remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
+      <% else %>
+        <%= link_to 'Follow', follow_user_path(@user.id), remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
+      <% end %>
+      <% end %>
+    </div>
+
+    </div>
+  </div>
+
+
+    <div class="row-user">
+      <% @user.posts.each do |post| %>
+        <% next if post.user_id.nil? %>
+
+        <div class="col-xs-6 col-md-4">
+          <div class="polaroid" style="width: 25vw; padding: 5px; margin: 0 auto">
+
+              <% if post.photograph.nil? %>
+                  <%= image_tag 'default-post.jpg', :class => "img-responsive" %>
+                  <p><%= link_to post.title, post_path(post.id) %></p>
+                <% else %>
+                    <%= image_tag(post.photograph, :class => "img-responsive") %>
+                    <p><%= link_to post.title, post_path(post.id) %></p>
+                <% end %>
+
+            <% end %>
+          </div>
+        </div>
+    </div>
+
+
+        <script>
+          // Week 7 code below:
+          $(document).ready(function() {
+          $('.btn.unfollow-button, .btn.follow-button').on('ajax:success', function(response) {
+          if ($(this).is('#unfollow-button')) {
+            $('#unfollow-button').text('Follow').attr('class', 'btn follow-button')
+            .attr('href', "/<%= @user.id %>/follow_user").attr('id', 'follow-button');
+          } else {
+            $('#follow-button').attr('class', 'btn unfollow-button').text('Following')
+            .attr('href', "/<%= @user.id %>/unfollow_user").attr('id', 'unfollow-button');
+          }
+          });
+          })
+        </script>

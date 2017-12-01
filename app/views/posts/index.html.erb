@@ -1,26 +1,57 @@
+
+
+<nav>
+    <div class="profile-links">
+        <% if @current_user.present? %>
+
+            <div class="user-links">
+                <%= link_to "other posts", posts_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            <% else %>
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                <% end %>
+                    |
+    </div>
+    <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
+
 <h1>check out what other users have posted..</h1>
 
-
-<% @posts.each do |post| %>
+<div class="row">
+  <% @posts.each do |post| %>
     <% next if post.user.id == @current_user.id %>
-        <p>
-            <%= post.title %>
-        </p>
 
-        <p>
+    <div class="col-xs-6 col-md-4">
+        <div class="polaroid" style="width: 25vw; padding: 5px; margin: 0 auto">
             <% if post.photograph.nil? %>
-                <%= image_tag 'default-post.jpg', :size => '200x200' %>
-                    <% else %>
-                        <%= image_tag(post.photograph) %>
-                            <% end %>
-        </p>
-        <p>
-            <%= post.caption %>
-        </p>
-
-        <% post.comments.each do |comment| %>
-            <%= comment.user.user_name %>
-                <%= comment.content %>
-
-                    <% end %>
-                        <% end %>
+            <p>
+              <%= link_to post.title, post_path(post.id) %>
+            </p>
+                <%= link_to image_tag 'default-post.jpg', :class => "img-responsive" %>
+              <% else %>              <p>
+                <%= link_to post.title, post_path(post.id) %>
+            </p>
+                <%= link_to image_tag(post.photograph, :class => "img-responsive") %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+  </div>

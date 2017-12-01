@@ -1,49 +1,89 @@
 
+<nav class="edit-nav">
+    <div class="profile-links">
 
-<h2>posts..</h2>
-
-<div>
-    <strong>Title:</strong>
-    <%= @post.title %>
-</div>
-
-<div>
-    <strong>Image:</strong>
-    <% if @post.photograph.nil? %>
-        <%= image_tag 'default-post.jpg', :size => '200x200' %>
+        <% if @current_user.present? %>
+            <div class="user-links">
+                <%= link_to 'home', root_path %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "profile", user_path(@current_user.id) %>
+            </div>
+            |
+            <div class="user-links">
+                <%= link_to "sign out #{ @current_user.name }", login_path, :method => 'delete' %>
+            </div>
+            |
             <% else %>
-                <%= image_tag(@post.photograph) %>
-                    <% end %>
-</div>
-
-<div>
-    <strong>Description:</strong>
-    <%= @post.caption %>
-</div>
-
-<div>
-    <strong>Comments:</strong> <br>
-
-    <% @post.comments.each do |comment| %>
-        <%= User.all.find(comment.user_id).name %>
-            <%= comment.content %>
-                <br>
+                <div class="user-links">
+                    <%= link_to 'login', login_path %>
+                </div>
+                |
+                <div class="user-links">
+                    <%= link_to 'sign up', new_user_path %>
+                </div>
                 <% end %>
 
-                    <br>
-                    <button class="glyphicon glyphicon-heart-empty"></button>
-                    <button class="glyphicon glyphicon-cutlery"></button>
-                    <button class="glyphicon glyphicon-sunglasses"></button>
+    </div>
+    <%= image_tag "home/logo.png", :class => "logo" %>
+</nav>
 
-                    <% if @current_user.present? %>
-                        <%= form_for [@post, @post.comments.new] do |f| %>
-                            <%= f.text_field :content, placeholder: 'add a comment...' %>
-                                <%= f.submit 'add comment', :class => "btn btn-danger" %>
-                                    <% end %>
-                                        <% else %>
-                                            <%= link_to 'login', login_path %>
-                                                <% end %>
+<h1>posts..</h1>
+
+<div class="row-posts">
+
+    <div class="col-md-6">
+        <div class="polaroid">
+
+              <% if @post.photograph.nil? %>
+                  <%= image_tag 'default-post.jpg', :class => "img-responsive" %>
+                  <p><%= @post.title %></p>
+                <% else %>
+                    <%= image_tag(@post.photograph, :class => "img-responsive") %>
+                    <p><%= @post.title %></p>
+                        <% end %>
+        </div>
+    </div>
+<div>
+
+
+<div class="row-comments">
+  <div class="col-md-6">
+  <br>
+  <button class="glyphicon glyphicon-heart"></button>
+  <button class="glyphicon glyphicon-cutlery"></button>
+  <button class="glyphicon glyphicon-sunglasses"></button>
+
+  <% if @current_user.present? %>
+      <%= form_for [@post, @post.comments.new] do |f| %>
+          <%= f.text_field :content, placeholder: 'add a comment...' %>
+          <%= f.submit 'add comment', :class => "btn btn-danger" %>
+      <% end %>
+  <% else %>
+    <%= link_to 'login', login_path %>
+  <% end %>
+  </div>
 </div>
+
+
+  <div class="row-comments">
+      <div class="col-md-6">
+          <%= @post.caption %>
+          <hr>
+          <% @post.comments.each do |comment| %>
+          <p>
+              <%#= comment.inspect %>
+              <% next unless comment.persisted? # WTF IS GOING ON HERE %>
+              <strong><%= comment.user.name %>:</strong>
+              <%= comment.content %>
+                      <br>
+          </p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
 
 <div>
     <% if @post.user_id == @current_user %>
@@ -51,7 +91,6 @@
             <% end %>
 </div>
 
-<!-- glyphicon glyphicon-heart -->
 
 <% if @post.user.id == @current_user.id %>
     <%= link_to 'edit', edit_post_path(@post.id) %>

@@ -46,12 +46,12 @@
                             <%= link_to user.name, user_path(user.id) %>
                         </p>
                         <%= image_tag 'default-profile.png', :class => "img-responsive"%>
-                            <% else %>
-                                <p>
-                                    <%= link_to user.name, user_path(user.id) %>
-                                </p>
-                                <%= image_tag user.profile, :class => "img-responsive" %>
-                                    <% end %>
+                      <% else %>
+                          <p>
+                            <%= link_to user.name, user_path(user.id) %>
+                          </p>
+                        <%= image_tag user.profile, :class => "img-responsive" %>
+                      <% end %>
                 </div>
             </div>
 
