@@ -3,10 +3,7 @@
     <div class="profile-links">
         <% if @current_user.present? %>
 
-            <div class="user-links">
-                <%= link_to 'home', root_path %>
-            </div>
-            |
+
             <div class="user-links">
                 <%= link_to "profile", user_path(@current_user.id) %>
             </div>
@@ -22,8 +19,12 @@
                 <div class="user-links">
                     <%= link_to 'login', login_path %>
                 </div>
-                <% end %>
+                <div class="user-links">
+                    <%= link_to 'home', root_path %>
+                </div>
                 |
+                <% end %>
+                
     </div>
     <%= image_tag "home/logo.png", :class => "logo" %>
 </nav>

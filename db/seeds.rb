@@ -1,14 +1,15 @@
 
 User.destroy_all
-u1 = User.create :name => 'one', :email => 'one@email.com', :password => 'chicken'
-u2 = User.create :name => 'two', :email => 'two@email.com', :password => 'chicken'
-u3 = User.create :name => 'three', :email => 'three@email.com', :password => 'chicken'
+u1 = User.create :name => 'chicken', :email => 'chicken@email.com', :password => 'chicken'
+u2 = User.create :name => 'shark', :email => 'shark@email.com', :password => 'chicken'
+u3 = User.create :name => 'elephant', :email => 'elephant@email.com', :password => 'chicken'
+
 
 
 Post.destroy_all
-p1 = Post.create :title => 'tester1', :caption => 'does this work?1'
-p2 = Post.create :title => 'tester2', :caption => 'does this work?2'
-p3 = Post.create :title => 'tester3', :caption => 'does this work?3'
+p1 = Post.create :title => 'chicken', :caption => 'my chicken friends'
+p2 = Post.create :title => 'hai', :caption => 'hello :)'
+p3 = Post.create :title => 'friends', :caption => 'my friends have the best memory..'
 
 Comment.destroy_all
 c1 = Comment.create :content => 'this is commenting on a post, yay'
